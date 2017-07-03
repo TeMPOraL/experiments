@@ -3,8 +3,21 @@
 
 Some Common Lisp coding experiments.
 
+* Experiments
+
 - compiler-macros.lisp
   - =href= - a function for convenient access to nested hash tables, that recognizes =/= as a separator for key
     names and can do a full key split and gethash expansion at compile time, via a compiler macro.
     Basically, a call to =(href obj "foo" "bar/baz")= will be equivalent to =(gethash "baz" (gethash "bar" (gethash "foo" obj)))=
     at compile time.
+
+* Testing
+
+Experiments are backed by tests when appropriate; see [[file:t/][t]] subfolder. To run tests, invoke:
+#+BEGIN_SRC lisp
+  (asdf:test-system :trc.experiments)
+#+END_SRC
+
+If it complains about missing =prove-asdf= system, invoke =(ql:quickload :prove)= and =(ql:quickload :prove-asdf)=. A one-time invocation
+should ensure it'll keep working (as long as you don't clear the systems downloaded by Quicklisp).
+
