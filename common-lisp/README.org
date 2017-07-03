@@ -1,0 +1,10 @@
+#+title: Experiments/Common Lisp
+#+startup: hidestars
+
+Some Common Lisp coding experiments.
+
+- compiler-macros.lisp
+  - =href= - a function for convenient access to nested hash tables, that recognizes =/= as a separator for key
+    names and can do a full key split and gethash expansion at compile time, via a compiler macro.
+    Basically, a call to =(href obj "foo" "bar/baz")= will be equivalent to =(gethash "baz" (gethash "bar" (gethash "foo" obj)))=
+    at compile time.
