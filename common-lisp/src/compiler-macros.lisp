@@ -37,4 +37,3 @@
                  `(gethash ,(car rev-keys) ,obj))))
     (apply #'build-call object (reverse (canonicalize-constant-keys keys)))))
 
-
