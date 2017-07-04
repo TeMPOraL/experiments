@@ -20,13 +20,13 @@
 
 ;;; Compiler macro
 
-(define-compiler-macro href (&whole form
+(define-compiler-macro href (&whole form &environment env
                                     object
                                     &rest keys)
   (declare (ignore form))
   (labels ((canonicalize-constant-keys (all-keys)
              (mapcan (lambda (key)
-                       (if (and (constantp key)
+                       (if (and (constantp key env)
                                 (stringp key))
                            (split-sequence:split-sequence #\/ key)
                            (list key)))
